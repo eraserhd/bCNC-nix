@@ -10,11 +10,11 @@
     (flake-utils.lib.eachDefaultSystem (system:
       let
         pkgs = nixpkgs.legacyPackages.${system};
-        bcnc = pkgs.callPackage ./derivation.nix {};
+        bCNC = pkgs.callPackage ./derivation.nix {};
       in {
         packages = {
-          default = bcnc;
-          inherit bcnc;
+          default = bCNC;
+          inherit bCNC;
         };
         devShells.default = pkgs.mkShell {
           nativeBuildInputs = with pkgs; [
@@ -22,7 +22,7 @@
         };
     })) // {
       overlays.default = final: prev: {
-        bcnc = prev.callPackage ./derivation.nix {};
+        bCNC = prev.callPackage ./derivation.nix {};
       };
     };
 }
