@@ -2,7 +2,7 @@
   description = "GRBL CNC command sender, autoleveler, and g-code editor";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/master";
     flake-utils.url = "github:numtide/flake-utils";
   };
 

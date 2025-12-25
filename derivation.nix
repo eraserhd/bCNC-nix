@@ -12,6 +12,7 @@ let
       hash = "sha256-hUHkvOYodoIsk/OVnn9pCe8b+DUmkbNDus2qqbkv8nA=";
     };
 
+    pyproject = true;
     build-system = with pythonPackages; [
       setuptools
       wheel
@@ -20,15 +21,20 @@ let
 
 in pythonPackages.buildPythonApplication rec {
   pname = "bCNC";
-  version = "0b3ad63e32d2ef8ffbe1a14345a6821d773f6067";
+  version = "df97b36f0b2fa91c6774a7c18da6df226537226e";
 
   src = fetchFromGitHub {
     owner = "vlachoudis";
     repo = "bCNC";
     rev = version;
-    hash = "sha256-OMILyZlqpozW8RXUQnlNLAUubbYjC+30CDBX5pafTzw=";
+    hash = "sha256-vMBBjVH3xemo55wjcpFzCkkE0vfcC0EBe2HIFC8XQ1s=";
   };
 
+  patches = [
+    ./opencv-pi-version.diff
+  ];
+
+  pyproject = true;
   build-system = with pythonPackages; [
     setuptools
     wheel
@@ -45,6 +51,7 @@ in pythonPackages.buildPythonApplication rec {
     #python-imaging-tk ??
     opencv-python
     scipy
+    tkinter-gl
   ];
 
   meta = with lib; {
